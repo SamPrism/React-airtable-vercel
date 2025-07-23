@@ -40,20 +40,20 @@ function App() {
           value={name}
           required
           onChange={(e) => setName(e.target.value)}
-        /><br /><br />
+        /><br />
         <input
           type="email"
           placeholder="Your email"
           value={email}
           required
           onChange={(e) => setEmail(e.target.value)}
-        /><br /><br />
+        /><br />
         <textarea
           placeholder="Your message"
           value={message}
           required
           onChange={(e) => setMessage(e.target.value)}
-        /><br /><br />
+        /><br />
         <button type="submit">Submit</button>
       </form>
       <p>{status}</p>
