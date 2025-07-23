@@ -11,12 +11,16 @@ module.exports = async (req, res) => {
     return res.status(405).json({ error: "Only POST requests allowed" });
   }
 
-  const { name, email } = req.body;
+  const { name, email, message } = req.body;
 
   try {
     const created = await base(process.env.AIRTABLE_TABLE_NAME).create([
       {
-        fields: { Name: name, Email: email },
+        fields: {
+            Name: name,
+            Email: email,
+            Message: message,
+        },
       },
     ]);
 

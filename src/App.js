@@ -4,6 +4,7 @@ import "./App.css";
 function App() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
   const [status, setStatus] = useState("");
 
   const handleSubmit = async (e) => {
@@ -13,7 +14,7 @@ function App() {
     const res = await fetch("/api/submit", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ name, email }),
+      body: JSON.stringify({ name, email, message }),
     });
 
     const result = await res.json();
@@ -26,6 +27,7 @@ function App() {
 
     setName("");
     setEmail("");
+    setMessage("");
   };
 
   return (
@@ -38,14 +40,20 @@ function App() {
           value={name}
           required
           onChange={(e) => setName(e.target.value)}
-        />
+        /><br /><br />
         <input
           type="email"
           placeholder="Your email"
           value={email}
           required
           onChange={(e) => setEmail(e.target.value)}
-        />
+        /><br /><br />
+        <textarea
+          placeholder="Your message"
+          value={message}
+          required
+          onChange={(e) => setMessage(e.target.value)}
+        /><br /><br />
         <button type="submit">Submit</button>
       </form>
       <p>{status}</p>
